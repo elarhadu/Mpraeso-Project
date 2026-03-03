@@ -1,3 +1,4 @@
+import { motion } from 'motion/react';
 import { Diaspora } from '../components/Diaspora';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 
@@ -14,16 +15,21 @@ export function DiasporaPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/50"></div>
         </div>
-        <div className="relative h-full flex items-center justify-center text-center px-4">
+        <motion.div
+          className="relative h-full flex items-center justify-center text-center px-4"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
           <div className="max-w-4xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              Diaspora Engagement
+              Diaspora Corner
             </h1>
             <p className="text-xl md:text-2xl text-white/90">
-              Connecting Mpraeso sons and daughters across the globe
+              Engagement, contributions & news from Mpraeso sons and daughters
             </p>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Main Diaspora Component */}

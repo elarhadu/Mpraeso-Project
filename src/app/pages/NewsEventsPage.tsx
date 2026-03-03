@@ -1,6 +1,6 @@
+import { motion } from 'motion/react';
 import { News } from '../components/News';
 import { Events } from '../components/Events';
-import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 
 export function NewsEventsPage() {
   return (
@@ -10,16 +10,21 @@ export function NewsEventsPage() {
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC40Ij48cGF0aCBkPSJNMzYgMzBoLTJ2LTJoMnYyem0wLTRoLTJ2LTJoMnYyem0wLTRoLTJ2LTJoMnYyem0wLTRoLTJ2LTJoMnYyem0wLTRoLTJ2LTJoMnYyem0wLTRoLTJ2LTJoMnYyem0wLTRoLTJ2LTJoMnYyem0wLTRoLTJ2LTJoMnYyem0wLTRoLTJ2LTJoMnYyeiIvPjwvZz48L2c+PC9zdmc+')] opacity-20"></div>
         </div>
-        <div className="relative h-full flex items-center justify-center text-center px-4">
+        <motion.div
+          className="relative h-full flex items-center justify-center text-center px-4"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
           <div className="max-w-4xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              News & Events
+              News & Announcements
             </h1>
             <p className="text-xl md:text-2xl text-white/90">
-              Stay updated with the latest happenings in Mpraeso community
+              Community updates, notices & events calendar
             </p>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* News Section */}

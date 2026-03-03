@@ -1,3 +1,4 @@
+import { motion } from 'motion/react';
 import { Projects } from '../components/Projects';
 import { Churches } from '../components/Churches';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
@@ -16,7 +17,12 @@ export function CommunityPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40"></div>
         </div>
-        <div className="relative h-full flex items-center justify-center text-center px-4">
+        <motion.div
+          className="relative h-full flex items-center justify-center text-center px-4"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
           <div className="max-w-4xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
               Our Community
@@ -25,7 +31,7 @@ export function CommunityPage() {
               Building together, growing together, thriving together
             </p>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Community Values */}
@@ -39,35 +45,28 @@ export function CommunityPage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#3a6b35] to-[#2d5016] rounded-full mb-6 shadow-lg">
-                <Users size={36} className="text-white" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Unity</h3>
-              <p className="text-gray-600 leading-relaxed">
-                We stand together as one community, supporting each other across all sub-towns and generations.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#d4a574] to-[#c89560] rounded-full mb-6 shadow-lg">
-                <Heart size={36} className="text-gray-900" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Compassion</h3>
-              <p className="text-gray-600 leading-relaxed">
-                We care for the vulnerable, support those in need, and create opportunities for all to thrive.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#3a6b35] to-[#2d5016] rounded-full mb-6 shadow-lg">
-                <HandHeart size={36} className="text-white" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Service</h3>
-              <p className="text-gray-600 leading-relaxed">
-                We serve our community through development projects, faith-based initiatives, and civic engagement.
-              </p>
-            </div>
+            {[
+              { Icon: Users, title: 'Unity', desc: 'We stand together as one community, supporting each other across all sub-towns and generations.' },
+              { Icon: Heart, title: 'Compassion', desc: 'We care for the vulnerable, support those in need, and create opportunities for all to thrive.' },
+              { Icon: HandHeart, title: 'Service', desc: 'We serve our community through development projects, faith-based initiatives, and civic engagement.' },
+            ].map((item, index) => (
+              <motion.div
+                key={item.title}
+                className="text-center"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.15 }}
+              >
+                <div className={`inline-flex items-center justify-center w-20 h-20 rounded-full mb-6 shadow-lg ${
+                  index === 0 || index === 2 ? 'bg-gradient-to-br from-[#3a6b35] to-[#2d5016]' : 'bg-gradient-to-br from-[#d4a574] to-[#c89560]'
+                }`}>
+                  <item.Icon size={36} className={index === 1 ? 'text-gray-900' : 'text-white'} />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

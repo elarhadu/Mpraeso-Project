@@ -1,3 +1,4 @@
+import { motion } from 'motion/react';
 import { Mail, Phone, MapPin, Send, Facebook, Twitter, Instagram } from 'lucide-react';
 
 export function ContactPage() {
@@ -5,7 +6,12 @@ export function ContactPage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative h-[40vh] min-h-[300px] bg-gradient-to-br from-[#3a6b35] to-[#2d5016]">
-        <div className="relative h-full flex items-center justify-center text-center px-4">
+        <motion.div
+          className="relative h-full flex items-center justify-center text-center px-4"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
           <div className="max-w-4xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
               Contact Us
@@ -14,7 +20,7 @@ export function ContactPage() {
               Get in touch with the Mpraeso community
             </p>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Contact Content */}

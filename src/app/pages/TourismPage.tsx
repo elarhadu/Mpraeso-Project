@@ -1,6 +1,7 @@
+import { motion } from 'motion/react';
 import { Tourism } from '../components/Tourism';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
-import { Calendar, MapPin, Camera, Palmtree, Mountain, Star } from 'lucide-react';
+import { Calendar, MapPin, Palmtree, Mountain, Star } from 'lucide-react';
 
 const experiences = [
   {
@@ -36,7 +37,12 @@ export function TourismPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40"></div>
         </div>
-        <div className="relative h-full flex items-center justify-center text-center px-4">
+        <motion.div
+          className="relative h-full flex items-center justify-center text-center px-4"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
           <div className="max-w-4xl">
             <div className="inline-block bg-[#d4a574] text-gray-900 px-6 py-2 rounded-full mb-6 font-semibold">
               Discover Mpraeso
@@ -45,10 +51,10 @@ export function TourismPage() {
               Tourism & Culture
             </h1>
             <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
-              Experience unforgettable adventures, vibrant festivals, and rich traditions in the heart of Ghana's Kwahu highlands
+              Attractions, festivals & landmarks in the heart of Ghana's Kwahu highlands
             </p>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Unique Experiences */}
